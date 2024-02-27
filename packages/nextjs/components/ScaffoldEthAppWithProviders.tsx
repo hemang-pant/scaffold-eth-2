@@ -11,12 +11,9 @@ import { BlockieAvatar } from "~~/components/scaffold-eth";
 import { ProgressBar } from "~~/components/scaffold-eth/ProgressBar";
 import { useNativeCurrencyPrice } from "~~/hooks/scaffold-eth";
 import { useGlobalState } from "~~/services/store/store";
-import { wagmiConfig } from "~~/services/web3/wagmiConfig";
-import { appChains } from "~~/services/web3/wagmiConnectors";
-import { polygon, optimism, arbitrum, base, zora, goerli, qTestnet } from "viem/chains";
+import { polygon } from "viem/chains";
 import { publicProvider } from "wagmi/providers/public";
 import { connectors } from "~~/utils/arcna-auth/wallet";
-import { createClient } from "viem";
 
 const ScaffoldEthApp = ({ children }: { children: React.ReactNode }) => {
   const price = useNativeCurrencyPrice();

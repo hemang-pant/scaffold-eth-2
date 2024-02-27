@@ -15,21 +15,16 @@ const auth = new AuthProvider(
   );
 const provider = auth.provider
 const connected = await auth.isLoggedIn()
-console.log({ connected })
   
   // setHooks: Manage chain or account switch in Arcana wallet
   function setHooks() {
     provider.on('connect', async (params) => {
-      console.log({ type: 'connect', params: params })
       const isLoggedIn = await auth.isLoggedIn()
-      console.log({ isLoggedIn })
     })
     provider.on('accountsChanged', (params) => {
       //Handle
-      console.log({ type: 'accountsChanged', params: params })
     })
     provider.on('chainChanged', async (params) => {
-      console.log({ type: 'chainChanged', params: params })
     })
   }
 
@@ -44,5 +39,4 @@ console.log({ connected })
         value: '0x0de0b6b3a7640000',
       },],
     })
-    console.log({ hash })
   }
