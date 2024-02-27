@@ -31,7 +31,7 @@ const Home: NextPage = () => {
             <Address address={connectedAddress} />
           </div>
           <div className="text-center text-lg">
-            {!connectedAddress && <p className="my-2 font-medium">Click on connecet wallet to proceed</p>}
+            {!connectedAddress && <p className="my-2 font-medium">Click on connect wallet to proceed</p>}
             {connectedAddress && <div className="flex-col">
             <button onClick={handleSubmit} className="btn btn-primary btn-md">send tokens</button><button onClick={handleTransaction} className="btn btn-primary btn-md">Add Token</button></div>}
           </div>
