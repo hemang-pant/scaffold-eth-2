@@ -1,42 +1,68 @@
 import { AuthProvider } from "@arcana/auth";
 import { useAccount } from "wagmi";
+import { getAuthProvider } from "./getArcanaauth";
 
 
-const { address: connectedAddress } = useAccount();
-
-const auth = new AuthProvider(
-    "xar_live_d7c88d9b033d100e4200d21a5c4897b896e60063",
-    {
-      theme: "dark",
-      connectOptions: {
-        compact: true
-      }
-    }
-  );
-const provider = auth.provider
-const connected = await auth.isLoggedIn()
-  
-  // setHooks: Manage chain or account switch in Arcana wallet
-  function setHooks() {
-    provider.on('connect', async (params) => {
-      const isLoggedIn = await auth.isLoggedIn()
+export const signTransaction = async (from: String) => {
+  try{
+    const { sig } = await getAuthProvider().provider.request({
+      "method": "eth_signTransaction",
+      "params": [{
+          "type": "0x2",
+          "from": "0xfe3b557e8fb62b89f4916b721be55ceb828dbd73",
+          "data": "0x684660005260206000f360005260096017f3",
+          "gas": "0x520008",
+          "maxPriorityFeePerGas": "0x10",
+          "maxFeePerGas": "0x100"
+      }],
     })
-    provider.on('accountsChanged', (params) => {
-      //Handle
-    })
-    provider.on('chainChanged', async (params) => {
-    })
+    console.log({ sig })
   }
+  catch (e) {
+    console.log(e)
+  }
+ 
+}
 
-  async function sendTransaction() {
+
+export const addToken = async () => {
+ try{
+    const { sig } = await getAuthProvider().provider.request({
+      method: 'wallet_watchAsset',
+        params: {
+          type: 'ERC20',
+          options: {
+            address: '0x95aD61b0a150d79219dCF64E1E6Cc01f0B64C4cE',
+            symbol: 'Sample TOken',
+            decimals: 18,
+            image: 'https://foo.io/token-image.svg',
+        },
+      },
+    })
+    console.log({ sig })
+  }
+  catch (e) {
+    console.log(e)
+  }
+}
+
+  export const sendTransaction = async (from: String) => {
     // setRequest('eth_sendTransaction')
-    const hash = await provider.request({
+    try{
+      console.log("functio called")
+    const hash = await getAuthProvider().provider.request({
       method: 'eth_sendTransaction',
         params: [{
-        from:'0x3d64E85fa139a8B0B5CfAa9D1a4BbaEbb2F72A9D',
+        from: from,
         gasPrice: 0,
         to: '0xE28F01Cf69f27Ee17e552bFDFB7ff301ca07e780',
         value: '0x0de0b6b3a7640000',
       },],
     })
+    console.log({hash})
+    }
+    catch (e) {
+      console.log(e)
+    }
   }
+

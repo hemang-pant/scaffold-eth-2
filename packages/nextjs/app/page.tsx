@@ -5,10 +5,21 @@ import type { NextPage } from "next";
 import { useAccount } from "wagmi";
 import { BugAntIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { Address } from "~~/components/scaffold-eth";
+import { addToken, sendTransaction, signTransaction } from "~~/utils/arcna-auth/sendToken";
 
 const Home: NextPage = () => {
   const { address: connectedAddress } = useAccount();
 
+
+  const handleSubmit = () => {
+    console.log("button pressed")
+    sendTransaction(connectedAddress!).then((e)=>console.log("function executed"))
+  }
+
+  const handleTransaction = () => {
+    console.log("button pressed")
+    addToken().then((e)=>console.log("function executed"))
+  }
   return (
     <>
       <div className="flex items-center flex-col flex-grow pt-10">
@@ -22,8 +33,9 @@ const Home: NextPage = () => {
             <Address address={connectedAddress} />
           </div>
           <p className="text-center text-lg">
-            Get started by editing{" "}
-            <button>button</button>
+            {connectedAddress && <button onClick={handleSubmit} className="btn btn-primary btn-sm">send tokens</button>}
+            {connectedAddress && <button onClick={handleTransaction} className="btn btn-primary btn-sm px-5">Add Token</button>}
+
           </p>
           <p className="text-center text-lg">
             Edit your smart contract{" "}
