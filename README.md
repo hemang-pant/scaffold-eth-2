@@ -1,4 +1,4 @@
-# Arcana auth demo in Eth Scaffold-2
+# Arcana Auth SDK demo using Eth Scaffold-2
 
 ## Requirements
 
