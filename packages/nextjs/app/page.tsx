@@ -5,7 +5,7 @@ import type { NextPage } from "next";
 import { useAccount } from "wagmi";
 import { BugAntIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { Address } from "~~/components/scaffold-eth";
-import { addToken, sendTransaction, signTransaction } from "~~/utils/arcna-auth/sendToken";
+import { addToken, sendTransaction } from "~~/utils/arcna-auth/sendToken";
 
 const Home: NextPage = () => {
   const { address: connectedAddress } = useAccount();
@@ -13,12 +13,12 @@ const Home: NextPage = () => {
 
   const handleSubmit = () => {
     console.log("button pressed")
-    sendTransaction(connectedAddress!).then((e)=>console.log("function executed"))
+    sendTransaction(connectedAddress!).then(()=>console.log("function executed"))
   }
 
   const handleTransaction = () => {
     console.log("button pressed")
-    addToken().then((e)=>console.log("function executed"))
+    addToken().then(()=>console.log("function executed"))
   }
   return (
     <>
