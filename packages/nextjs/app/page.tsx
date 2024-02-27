@@ -2,12 +2,10 @@
 
 import Link from "next/link";
 import type { NextPage } from "next";
-import { configureChains, mainnet, useAccount } from "wagmi";
+import { useAccount } from "wagmi";
 import { BugAntIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { Address } from "~~/components/scaffold-eth";
-import { polygon, optimism, arbitrum, base, zora, goerli } from "viem/chains";
-import { publicProvider } from "wagmi/dist/providers/public";
-import { getAuthProvider } from "~~/utils/arcna-auth/getArcanaauth";
+import { AuthProvider } from "@arcana/auth";
 
 const Home: NextPage = () => {
   const { address: connectedAddress } = useAccount();
@@ -26,6 +24,7 @@ const Home: NextPage = () => {
           </div>
           <p className="text-center text-lg">
             Get started by editing{" "}
+            <button>button</button>
           </p>
           <p className="text-center text-lg">
             Edit your smart contract{" "}

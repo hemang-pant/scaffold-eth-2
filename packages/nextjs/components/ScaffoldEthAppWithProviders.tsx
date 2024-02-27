@@ -50,7 +50,7 @@ export const ScaffoldEthAppWithProviders = ({ children }: { children: React.Reac
   }, []);
 
   const { chains, publicClient } = configureChains(
-    [mainnet, polygon, optimism, arbitrum, qTestnet],
+    [mainnet, polygon],
     [publicProvider()]
   );
   
