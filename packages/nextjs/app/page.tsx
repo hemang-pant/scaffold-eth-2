@@ -4,6 +4,7 @@ import type { NextPage } from "next";
 import { useAccount } from "wagmi";
 import { Address } from "~~/components/scaffold-eth";
 import { addToken, sendTransaction } from "~~/utils/arcna-auth/sendToken";
+import { DynamicWidget } from "~~/utils/dynamic";
 
 const Home: NextPage = () => {
   const { address: connectedAddress } = useAccount();

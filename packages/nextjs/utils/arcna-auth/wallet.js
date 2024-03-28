@@ -3,6 +3,7 @@ import { ArcanaConnector } from "@arcana/auth-wagmi";
 
 import { sequenceLogo } from "./logo";
 import { getAuthProvider } from "./getArcanaauth";
+import { ParticleAuth } from "../particle-auth/particleAuth";
 
 export const ArcanaRainbowConnector = ({ chains }) => {
   return {
@@ -29,6 +30,15 @@ const connectors = (chains) =>
     {
       groupName: "Recommended",
       wallets: [ArcanaRainbowConnector({ chains })]
+    },
+    {
+      groupName: "Particle Auth",
+      wallets: [
+        ParticleAuth({chains: chains, authType: "google"}),
+        ParticleAuth({chains: chains, authType: "apple"}),
+        ParticleAuth({chains: chains, authType: "facebook"}),
+        ParticleAuth({ chains }),
+      ]
     }
   ]);
 

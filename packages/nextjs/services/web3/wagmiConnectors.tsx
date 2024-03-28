@@ -51,6 +51,7 @@ const walletsOptions = { chains: appChains.chains, projectId: scaffoldConfig.wal
 const wallets = [
   metaMaskWallet({ ...walletsOptions, shimDisconnect: true }),
   walletConnectWallet(walletsOptions),
+
   ledgerWallet(walletsOptions),
   braveWallet(walletsOptions),
   coinbaseWallet({ ...walletsOptions, appName: "scaffold-eth-2" }),
